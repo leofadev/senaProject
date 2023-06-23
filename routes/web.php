@@ -30,5 +30,6 @@ Route::get('/change-password', function () { return view('dash.change-password')
 // Routas for the CRUD
 route::resource('ambientes', AmbienteController::class);
 route::resource('llaves', LlaveController::class);
-Route::get('ambientes', [AmbienteController::class, 'ambientes'])->name('ambientes');Route::get('llaves', [LlaveController::class, 'index'])->name('llaves');
+Route::get('ambientes', [AmbienteController::class, 'ambientes'])->name('ambientes');
+Route::get('llaves', [LlaveController::class, 'index'])->name('llaves');
 

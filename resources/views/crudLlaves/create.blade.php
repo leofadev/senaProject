@@ -12,34 +12,36 @@
         <div class="row">
             <div class="col-12">
                 <div class="container">
-                    <form action="/ambientes" method="POST">
+                    <form action="/llaves" method="POST">
                         @csrf
                         <div class="container">
                             <label class="label form-label">Ambiente</label>
                         </div>
 
                         <div class="container">
-                            {{-- @foreach($llaves as $llave) --}}
-
-                            <select name="">
-                                <option value="">
-                                    {{-- {{ $llave->id_ambientes }} --}}
+                            <select name="id_ambiente" class="form-select form-select-sm">
+                            @foreach($ambientes as $ambient)
+                                <option>
+                                    {{$ambient}}
                                 </option>
+                                @endforeach
                             </select>
-
-                            {{-- @endforeach --}}
                         </div>
 
                         <div class="container">
                             <label class="label form-label">Llave</label>
                         </div>
 
-                        <div class="input-group">
-                            <input class="input rounded" type="text" name='descripcion' required>
+
+                        <div class="container">
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Llave</span>
+                                <input class="form-control rounded-right" type="text" name='descripcion_llave' required>
+                            </div>
                         </div>
 
                         <div class="container">
-                            <a href="/ambientes"  class="btn btn-danger  mt-2 mr-2">
+                            <a href="/llaves"  class="btn btn-danger  mt-2 mr-2">
                                 Cancelar
                             </a>
                             <button type="submit" class="btn btn-primary  mt-2">

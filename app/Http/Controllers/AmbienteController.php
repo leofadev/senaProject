@@ -57,7 +57,8 @@ class AmbienteController extends Controller
      */
     public function edit(string $id)
     {
-        return view('crudAmbientes.edit');
+        $ambiente = Ambiente::find($id);
+        return view('crudAmbientes.edit')-> with('ambiente', $ambiente);
     }
 
     /**
@@ -65,7 +66,12 @@ class AmbienteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $ambiente = Ambiente::find($id);
+
+        $ambiente->descripcion = $request->get('descripcion');
+        $ambiente->save();
+
+        return redirect('/ambientes');
     }
 
     /**
@@ -73,7 +79,10 @@ class AmbienteController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $ambiente = Ambiente::find($id);
+        $ambiente->delete();
+
+        return redirect('/ambientes');
     }
 
 }

@@ -27,12 +27,17 @@
                                     {{ $ambiente->descripcion }}
                                 </td>
                                 <td class="text-center">
-                                    <button class="btn btn-warning">
-                                        Editar
-                                    </button>
-                                    <button class="btn btn-danger ml-2">
-                                        Eliminar
-                                    </button>
+
+                                    <form action="{{route ('ambientes.destroy', $ambiente->id)}}" method="POST">
+                                        <a href="/ambientes/{{$ambiente->id}}/edit" class="btn btn-warning">
+                                            Editar
+                                        </a>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button Type="submit" class="btn btn-danger ml-2">
+                                            Eliminar
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

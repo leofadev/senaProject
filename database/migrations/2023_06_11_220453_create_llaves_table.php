@@ -15,12 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('descripcion');
 
-            $table->foreignId('id_ambiente')
-            ->nullable()
-            ->constrained('ambientes')
-            ->cascadeOnUpdate()
-            ->nullOnDelete()
-            ->timestamps();
+            $table->foreignId('id_ambiente')->references('id')->on('ambientes');
+
+            // $table->foreignId('id_ambiente')
+            // ->nullable()
+            // ->constrained('ambientes')
+            // ->cascadeOnUpdate()
+            // ->nullOnDelete()
+            // ->timestamps();
         });
     }
 

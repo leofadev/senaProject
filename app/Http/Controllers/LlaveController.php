@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Llave;
+use App\Models\Ambiente;
 class LlaveController extends Controller
 {
     /**
@@ -12,7 +13,8 @@ class LlaveController extends Controller
     public function index()
     {
         $llaves = Llave::all();
-        return view('dash.llaves', compact('llaves'));
+        $ambientes = Ambiente::pluck('descripcion');
+        return view('dash.llaves', compact('llaves'), compact('ambientes'));
     }
 
     /**
@@ -21,7 +23,8 @@ class LlaveController extends Controller
     public function create()
     {
         $llaves = Llave::all();
-        return view('crudLlaves.create');
+        $ambientes = Ambiente::pluck('descripcion');
+        return view('crudLlaves.create', compact('llaves'), compact('ambientes'));
     }
 
     /**
@@ -30,7 +33,8 @@ class LlaveController extends Controller
     public function store(Request $request)
     {
         $llaves = new Llave();
-        $llaves->descripcion = $request->get('descripcion');
+        $llaves->id_ambiente = $request->get('id_ambiente');
+        $llaves->descripcion = $request->get('descripcion_llave');
         $llaves->save();
 
         return redirect('/llaves');
@@ -49,7 +53,9 @@ class LlaveController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $llave = Llave::find($id);
+        $ambientes = Ambiente::pluck('descripcion', 'id');
+        return view('crudLlaves.edit', compact('ambientes'))-> with('llave', $llave);
     }
 
     /**
@@ -57,7 +63,13 @@ class LlaveController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $llave = Llave::find($id);
+
+        $llave->id_ambiente = $request->get('id_ambiente');
+        $llave->descripcion = $request->get('descripcion_llave');
+        $llave->save();
+
+        return redirect('/llaves');
     }
 
     /**
@@ -65,6 +77,9 @@ class LlaveController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $llave = Llave::find($id);
+        $llave->delete();
+
+        return redirect('/llaves');
     }
 }
