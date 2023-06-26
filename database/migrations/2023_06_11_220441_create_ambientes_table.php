@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ambientes', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion');
+            $table->string('descripcion')->uniqid();
             $table->timestamps();
         });
     }

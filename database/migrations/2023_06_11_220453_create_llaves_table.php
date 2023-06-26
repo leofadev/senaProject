@@ -14,15 +14,8 @@ return new class extends Migration
         Schema::create('llaves', function (Blueprint $table) {
             $table->id();
             $table->string('descripcion');
-
-            $table->foreignId('id_ambiente')->references('id')->on('ambientes');
-
-            // $table->foreignId('id_ambiente')
-            // ->nullable()
-            // ->constrained('ambientes')
-            // ->cascadeOnUpdate()
-            // ->nullOnDelete()
-            // ->timestamps();
+            $table->integer('id_ambiente');
+            $table->timestamps();
         });
     }
 

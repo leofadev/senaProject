@@ -23,8 +23,8 @@ class LlaveController extends Controller
     public function create()
     {
         $llaves = Llave::all();
-        $ambientes = Ambiente::pluck('descripcion');
-        return view('crudLlaves.create', compact('llaves'), compact('ambientes'));
+        $ambientes = Ambiente::pluck('id','descripcion');
+        return view('crudLlaves.create', compact('llaves','ambientes'));
     }
 
     /**
@@ -54,8 +54,7 @@ class LlaveController extends Controller
     public function edit(string $id)
     {
         $llave = Llave::find($id);
-        $ambientes = Ambiente::pluck('descripcion', 'id');
-        return view('crudLlaves.edit', compact('ambientes'))-> with('llave', $llave);
+        return view('crudLlaves.edit')-> with('llave', $llave);
     }
 
     /**
@@ -65,10 +64,8 @@ class LlaveController extends Controller
     {
         $llave = Llave::find($id);
 
-        $llave->id_ambiente = $request->get('id_ambiente');
         $llave->descripcion = $request->get('descripcion_llave');
         $llave->save();
-
         return redirect('/llaves');
     }
 
