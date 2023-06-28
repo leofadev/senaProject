@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('llaves', function (Blueprint $table) {
             $table->id();
             $table->string('descripcion')->uniqid();
-            $table->integer('id_ambiente');
+            $table->integer('id_ambiente')->uniqid();
             $table->timestamps();
         });
     }

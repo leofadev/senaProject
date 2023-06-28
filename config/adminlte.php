@@ -348,7 +348,7 @@ return [
                 ],
                 [
                     'text' => 'Registro',
-                    'url'  => '#',
+                    'route'  => 'registro',
                     'icon_color' => 'success',
                 ],
             ],

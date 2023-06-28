@@ -66,9 +66,16 @@ class EstadoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function updateStatusKey(Request $request)
     {
-        //
+        $KeyUpdate = Estado::findOrFail($request->id)->update(['estado' => $request->estado]);
+
+        if ($request->estado == 0) {
+            $newStatus = '<button type="button" class="btn btn-sm btn-success">Habilitado</button>';
+        }else{
+            $newStatus = '<button type="button" class="btn btn-sm btn-danger">Inhabilitado</button>';
+        }
+        return response()->json(['var'=>''.$newStatus.'']);
     }
 
     /**

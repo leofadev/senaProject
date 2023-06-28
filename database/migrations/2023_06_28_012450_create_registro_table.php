@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('estado', function (Blueprint $table) {
+        Schema::create('registro', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_llave');
-            $table->foreignId('id_ambiente');
-            $table->string('prestatario');
-            $table->string('encargado');
-            $table->string('estado');
-            $table->string('registrar');
+            $table->integer('id_llave');
+            $table->integer('id_ambiente');
+            $table->integer('id_prestatario');
+            $table->integer('id_encargado');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('estado');
+        Schema::dropIfExists('registro');
     }
 };

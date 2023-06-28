@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AmbienteController;
+use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\LlaveController;
 use App\Models\Llave;
@@ -36,4 +37,7 @@ route::resource('llaves', LlaveController::class);
 Route::get('llaves', [LlaveController::class, 'index'])->name('llaves');
 route::resource('estados', EstadoController::class);
 Route::get('estado', [EstadoController::class, 'index'])->name('estado');
+Route::resource('registros', RegistroController::class);
+Route::get('registro', [RegistroController::class, 'index'])->name('registro');
+Route::get('status', [RegistroController::class, 'updateStatusKey'])->name('updateStatusKey');
 
