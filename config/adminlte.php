@@ -192,7 +192,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-success elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -334,36 +334,24 @@ return [
                 [
                     'text' => 'Ambientes',
                     'route'  => 'ambientes',
+                    'icon_color' => 'success',
                 ],
                 [
                     'text' => 'Llaves',
                     'route'  => 'llaves',
+                    'icon_color' => 'success',
                 ],
                 [
                     'text'    => 'Estado',
-                    'url'     => '#'
+                    'route'     => 'estado',
+                    'icon_color' => 'success',
                 ],
                 [
                     'text' => 'Registro',
                     'url'  => '#',
+                    'icon_color' => 'success',
                 ],
             ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
         ],
     ],
 

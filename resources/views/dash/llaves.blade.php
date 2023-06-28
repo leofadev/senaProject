@@ -15,7 +15,7 @@
                     Nueva Llave
                 </a>
 
-                <table id="table_create_ambiente" class="table table-striped table-hover rounded border ">
+                <table id="table_create_llaves" class="table table-striped table-hover rounded border ">
                     <thead>
                         <th class="text-center">Llaves</th>
                         <th class="text-center">Ambientes</th>
@@ -69,7 +69,7 @@
         console.log('Hi!');
 
         $(document).ready(function() {
-            $('#table_create_ambiente').DataTable({
+            $('#table_create_llaves').DataTable({
                 "language": {
                     "search": "Buscar",
                     "lengthMenu": "Mostrar _MENU_ registros por pagina",

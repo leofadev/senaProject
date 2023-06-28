@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('llaves', function (Blueprint $table) {
+        Schema::create('estado', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion')->uniqid();
-            $table->integer('id_ambiente');
+            $table->foreignId('id_llave');
+            $table->foreignId('id_ambiente');
+            $table->string('prestatario');
+            $table->string('encargado');
+            $table->string('estado');
+            $table->string('registrar');
             $table->timestamps();
         });
     }
@@ -24,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('llaves');
+        Schema::dropIfExists('estado');
     }
 };

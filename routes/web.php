@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AmbienteController;
+use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\LlaveController;
 use App\Models\Llave;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +18,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('dash', [AmbienteController::class, 'index'])->name('dash');
+    Route::get('/dash', [AmbienteController::class, 'index'])->name('dash');
 });
 
 
@@ -27,9 +28,12 @@ Route::get('/change-password', function () { return view('dash.change-password')
 })->name('change-password');
 
 
+
 // Routas for the CRUD
 route::resource('ambientes', AmbienteController::class);
-route::resource('llaves', LlaveController::class);
 Route::get('ambientes', [AmbienteController::class, 'ambientes'])->name('ambientes');
+route::resource('llaves', LlaveController::class);
 Route::get('llaves', [LlaveController::class, 'index'])->name('llaves');
+route::resource('estados', EstadoController::class);
+Route::get('estado', [EstadoController::class, 'index'])->name('estado');
 

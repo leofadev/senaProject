@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('llaves', function (Blueprint $table) {
+
+        Schema::create('estados', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion')->uniqid();
+            // $table->foreignId('id_llave')->references('id')->on('llaves');
+            $table->integer('id_llave');
             $table->integer('id_ambiente');
+            $table->string('prestatario');
+            $table->string('encargado');
+            $table->string('estado');
             $table->timestamps();
         });
     }
@@ -24,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('llaves');
+        Schema::dropIfExists('estados');
     }
 };
