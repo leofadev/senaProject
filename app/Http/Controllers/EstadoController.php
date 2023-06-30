@@ -6,6 +6,7 @@ use App\Models\Estado;
 use App\Models\Ambiente;
 use App\Models\Llave;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EstadoController extends Controller
 {
@@ -17,7 +18,7 @@ class EstadoController extends Controller
         $estados = Estado::all();
         $llaves = Llave::pluck('descripcion');
         $ambientes = Ambiente::pluck('descripcion');
-        return view('dash.estado', compact('estados','llaves','ambientes'));
+        return view('dash.estado', compact('estados', 'llaves', 'ambientes'));
     }
 
     /**
@@ -28,7 +29,7 @@ class EstadoController extends Controller
         $llaves = Llave::pluck('id');
         $llave_descripcion = Llave::pluck('descripcion');
         $ambientes = Ambiente::pluck('id');
-        return view('crudEstado.create', compact('llaves','llave_descripcion','ambientes'));
+        return view('crudEstado.create', compact('llaves', 'llave_descripcion', 'ambientes'));
     }
 
     /**
@@ -66,16 +67,19 @@ class EstadoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function updateStatusKey(Request $request)
+    public function updateStatusKey($id, $estado)
     {
-        $KeyUpdate = Estado::findOrFail($request->id)->update(['estado' => $request->estado]);
+        // $KeyUpdate = Estado::findOrFail($id)->update(['estado' => $estado]);
+        $KeyUpdate = DB::table('estados')->where('id', $id)
+        ->update(['estado' => $estado]);
 
-        if ($request->estado == 0) {
-            $newStatus = '<button type="button" class="btn btn-sm btn-success">Habilitado</button>';
-        }else{
-            $newStatus = '<button type="button" class="btn btn-sm btn-danger">Inhabilitado</button>';
+        if ($estado == 1) {
+            $newStatus = '<p class="btn btn-success">Habilitado</p>';
+        } else {
+            $newStatus = '<p class="btn btn-danger">Deshabilitado</p>';
         }
-        return response()->json(['var'=>''.$newStatus.'']);
+
+        return response(json_encode($newStatus), 200)->header('Content-type', 'text/plain');
     }
 
     /**

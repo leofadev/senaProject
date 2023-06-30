@@ -39,5 +39,5 @@ route::resource('estados', EstadoController::class);
 Route::get('estado', [EstadoController::class, 'index'])->name('estado');
 Route::resource('registros', RegistroController::class);
 Route::get('registro', [RegistroController::class, 'index'])->name('registro');
-Route::get('status', [RegistroController::class, 'updateStatusKey'])->name('updateStatusKey');
+Route::get('status/{id}/{estado}', [EstadoController::class, 'updateStatusKey'])->name('updateStatusKey');
 

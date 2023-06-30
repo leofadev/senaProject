@@ -30,6 +30,7 @@
                             <tr>
                                 <td class="text-center">
                                     {{ $estado_tb->estados->descripcion }}
+
                                 </td>
                                 <td class="text-center">
                                     {{ $estado_tb->ambientes->descripcion }}
@@ -42,16 +43,16 @@
                                 </td>
                                 <td id="resp{{ $estado_tb->id }}" class="text-center">
                                     @if ($estado_tb->estado == 1)
-                                    <button type="button" class="btn btn-sm btn-success">Habilitado</button>
+                                    <p class="btn btn-success">Habilitado</p>
                                     @else
-                                        <button type="button" class="btn btn-sm btn-danger">Inhabilitado</button>
+                                    <p class="btn btn-danger">Deshabilitado</p>
                                     @endif
                                 </td>
                                 <td class="text-center">
                                     <label class="switch form-check form-switch">
-                                            <input class="mi_checkbox" data-id="{{ $estado_tb->id }}" type="checkbox"
-                                            data-onStyle="success" data-offStyle="danger" data-toggle="switchbutton" checked data-size="xs"
-                                            data-on="habilitado" data-off="inhabilitado"
+                                        <input class="mi_checkbox" data-id="{{ $estado_tb->id }}" type="checkbox"
+                                            data-onStyle="success" data-offStyle="danger" data-toggle="switchbutton" checked
+                                            data-size="xs"
                                             {{ $estado_tb->estado ? 'checked' : '' }}>
                                     </label>
                                 </td>
@@ -81,18 +82,20 @@
     @livewireStyles
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css"
+        rel="stylesheet">
 @stop
 
 @section('js')
-<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js">
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         console.log('Hi!');
-
+        console.log($('#prueba'));
         $(document).ready(function() {
             $('#table_create_estado').DataTable({
                 "language": {
@@ -115,20 +118,32 @@
             let id = $(this).data('id');
             console.log(estado);
 
-            $.ajax({
-                type: "GET",
-                dataType: "json",
-                url: '{{ route('updateStatusKey') }}',
-                data: {
-                    'estado': estado,
-                    'id': id
-                },
-                success: function(data) {
-                    $('#resp' + id).html(data.let);
-                    console.log(data.let);
+            // $.ajax({
+            //     type: "GET",
+            //     dataType: "json",
+            //     url: `/status/${id}/${estado}`,
+            //     data:'',
+            //     success: function(data) {
+            //         // $('#resp' + id).html(data.let);
+            //         let respuesta = JSON.parse(data);
+            //         console.log(respuesta);
 
+            //     }
+            // });
+
+            const url = `/status/${id}/${estado}`;
+            const http = new XMLHttpRequest();
+
+            http.open("GET", url)
+            http.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let response = JSON.parse(this.responseText)
+                    console.log(this.responseText);
+                    document.getElementById(`resp${id}`).innerHTML = response;
+                    console.log(document.getElementById(`resp${id}`));
                 }
-            });
+            }
+                http.send()
         })
     </script>
 @stop
