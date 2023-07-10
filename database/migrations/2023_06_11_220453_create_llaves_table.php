@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('llaves', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion')->uniqid();
-            $table->integer('id_ambiente')->uniqid();
+            $table->string('descripcion_llave')->uniqid();
+            $table->foreignId('id_ambiente')
+            ->nullable()
+            ->constrained('ambientes')
+            ->cascadeOnUpdate()
+            ->nullOnDelete();
             $table->timestamps();
         });
     }

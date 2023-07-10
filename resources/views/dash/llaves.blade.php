@@ -25,7 +25,7 @@
                         @foreach ($llaves as $llave)
                             <tr>
                                 <td class="text-center">
-                                    {{ $llave->descripcion }}
+                                    {{ $llave->descripcion_llave }}
                                 </td>
                                 <td class="text-center">
                                     {{ $llave->ambientes->descripcion ?? '' }}

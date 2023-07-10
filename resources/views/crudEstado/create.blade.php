@@ -23,8 +23,8 @@
                                 <div class="input-group">
                                     <select name="id_llave" class="form-select form-select-sm">
                                         @foreach($llaves as $llave)
-                                            <option value="{{$llave}}">
-                                                {{$llave}}
+                                            <option value="{{$llave->id}}">
+                                                {{$llave->descripcion_llave}}
                                             </option>
                                             @endforeach
                                         </select>
@@ -38,9 +38,9 @@
                                 </div>
                                 <div class="input-group">
                                     <select name="id_ambiente" class="form-select form-select-sm">
-                                        @foreach($ambientes as $ambiente)
-                                            <option value="{{$ambiente}}">
-                                                {{$ambiente}}
+                                        @foreach($ambientes as $ambient)
+                                            <option value=" {{$ambient->id}}">
+                                                {{$ambient->descripcion}}
                                             </option>
                                             @endforeach
                                         </select>

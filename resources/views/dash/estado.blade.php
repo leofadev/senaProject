@@ -29,7 +29,7 @@
                         @foreach ($estados as $estado_tb)
                             <tr>
                                 <td class="text-center">
-                                    {{ $estado_tb->estados->descripcion }}
+                                    {{ $estado_tb->llaves->descripcion_llave }}
 
                                 </td>
                                 <td class="text-center">
@@ -114,7 +114,7 @@
 
         $('.mi_checkbox').change(function() {
             //Verifico el estado del checkbox, si esta seleccionado sera igual a 1 de lo contrario sera igual a 0
-            let estado = $(this).prop('checked') == true ? 1 : 0;
+            let estado = $(this).prop('checked') == true ? 'habilitado' : 'inhabilitado';
             let id = $(this).data('id');
             console.log(estado);
 

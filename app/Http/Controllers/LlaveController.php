@@ -23,7 +23,7 @@ class LlaveController extends Controller
     public function create()
     {
         $llaves = Llave::all();
-        $ambientes = Ambiente::pluck('id','descripcion');
+        $ambientes = Ambiente::all('id','descripcion');
         return view('crudLlaves.create', compact('llaves','ambientes'));
     }
 
@@ -34,7 +34,7 @@ class LlaveController extends Controller
     {
         $llaves = new Llave();
         $llaves->id_ambiente = $request->get('id_ambiente');
-        $llaves->descripcion = $request->get('descripcion_llave');
+        $llaves->descripcion_llave = $request->get('descripcion_llave');
         $llaves->save();
 
         return redirect('/llaves');

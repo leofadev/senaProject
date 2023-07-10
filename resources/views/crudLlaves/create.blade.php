@@ -21,8 +21,8 @@
                         <div class="container">
                             <select name="id_ambiente" class="form-select form-select-sm">
                             @foreach($ambientes as $ambient)
-                                <option>
-                                    {{$ambient}}
+                                <option value=" {{$ambient->id}}">
+                                    {{$ambient->descripcion}}
                                 </option>
                                 @endforeach
                             </select>

@@ -16,8 +16,8 @@ class EstadoController extends Controller
     public function index()
     {
         $estados = Estado::all();
-        $llaves = Llave::pluck('descripcion');
-        $ambientes = Ambiente::pluck('descripcion');
+        $llaves = Llave::all('id','descripcion_llave');
+        $ambientes = Ambiente::all('id','descripcion');
         return view('dash.estado', compact('estados', 'llaves', 'ambientes'));
     }
 
@@ -26,9 +26,9 @@ class EstadoController extends Controller
      */
     public function create()
     {
-        $llaves = Llave::pluck('id');
-        $llave_descripcion = Llave::pluck('descripcion');
-        $ambientes = Ambiente::pluck('id');
+        $llaves = Llave::all('id','descripcion_llave');
+        $llave_descripcion = Llave::pluck('descripcion_llave');
+        $ambientes = Ambiente::all('id','descripcion');
         return view('crudEstado.create', compact('llaves', 'llave_descripcion', 'ambientes'));
     }
 
@@ -73,10 +73,10 @@ class EstadoController extends Controller
         $KeyUpdate = DB::table('estados')->where('id', $id)
         ->update(['estado' => $estado]);
 
-        if ($estado == 1) {
+        if ($estado == 'habilitado') {
             $newStatus = '<p class="btn btn-success">Habilitado</p>';
         } else {
-            $newStatus = '<p class="btn btn-danger">Deshabilitado</p>';
+            $newStatus = '<p class="btn btn-danger">Inhabilitado</p>';
         }
 
         return response(json_encode($newStatus), 200)->header('Content-type', 'text/plain');
