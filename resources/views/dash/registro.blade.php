@@ -22,33 +22,33 @@
                     <th class="text-center">Ambiente</th>
                     <th class="text-center">Encargado</th>
                     <th class="text-center">Prestatario</th>
-                    <th class="text-center">Hora y Fecha de creacion</th>
-                    <th class="text-center">Ultima Hora y Fecha</th>
+                    <th class="text-center">Hora y Fecha del prestamo</th>
+                    <th class="text-center">Hora y Fecha de devolucion</th>
                 </thead>
                 <tbody>
-                    @foreach ($registros as $registro)
+
 
                     <tr>
                         <td class="text-center">
-                            {{ $registro->estados->descripcion }}
+
                         </td>
                         <td class="text-center">
-                            {{ $registro->ambientes->descripcion }}
+
                         </td>
                         <td class="text-center">
-                            {{ $registro->encargado }}
+
                         </td>
                         <td class="text-center">
-                            {{ $registro->prestatario }}
+
                         </td>
                         <td class="text-center">
-                            {{ $registro->created_at }}
+
                         </td>
                         <td class="text-center">
-                            {{ $registro->updated_at }}
+
                         </td>
                     </tr>
-                    @endforeach
+
                 </tbody>
             </table>
         </div>

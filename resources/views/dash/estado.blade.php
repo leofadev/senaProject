@@ -45,7 +45,7 @@
                                     @if ($estado_tb->estado == 1)
                                     <p class="btn btn-success">Habilitado</p>
                                     @else
-                                    <p class="btn btn-danger">Deshabilitado</p>
+                                    <p class="btn btn-danger">Inhabilitado</p>
                                     @endif
                                 </td>
                                 <td class="text-center">

@@ -16,7 +16,7 @@ class RegistroController extends Controller
     public function index()
     {
         $registros = Estado::all();
-        $llaves = Llave::pluck('descripcion');
+        $llaves = Llave::pluck('descripcion_llave');
         $ambientes = Ambiente::pluck('descripcion');
         return view('dash.registro', compact('registros','llaves','ambientes'));
     }

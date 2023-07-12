@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('registro', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_llave');
-            $table->integer('id_ambiente');
-            $table->integer('id_prestatario');
-            $table->integer('id_encargado');
+            $table->string('llave');
+            $table->string('ambiente');
+            $table->string('prestatario');
+            $table->string('encargado');
+            $table->string('hora_estado');
             $table->timestamps();
         });
     }
