@@ -69,7 +69,6 @@ class EstadoController extends Controller
      */
     public function updateStatusKey($id, $estado)
     {
-        // $KeyUpdate = Estado::findOrFail($id)->update(['estado' => $estado]);
         $KeyUpdate = DB::table('estados')->where('id', $id)
         ->update(['estado' => $estado]);
 

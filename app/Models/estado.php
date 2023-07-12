@@ -9,14 +9,6 @@ class Estado extends Model
 {
     use HasFactory;
 
-    // public function estados(){
-    //     return $this->hasOne(Llave::class,'id', 'id_llave');
-    // }
-
-    // public function ambientes(){
-    //     return $this->hasOne(Ambiente::class,'id', 'id_ambiente');
-    // }
-
     public function llaves() {
         return $this->belongsTo(Llave::class, 'id');
     }

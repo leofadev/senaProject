@@ -14,7 +14,6 @@ return new class extends Migration
 
         Schema::create('estados', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('id_llave')->references('id')->on('llaves');
             $table->foreignId('id_llave')
             ->nullable()
             ->constrained('llaves')

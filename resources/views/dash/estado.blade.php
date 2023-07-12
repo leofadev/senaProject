@@ -118,19 +118,6 @@
             let id = $(this).data('id');
             console.log(estado);
 
-            // $.ajax({
-            //     type: "GET",
-            //     dataType: "json",
-            //     url: `/status/${id}/${estado}`,
-            //     data:'',
-            //     success: function(data) {
-            //         // $('#resp' + id).html(data.let);
-            //         let respuesta = JSON.parse(data);
-            //         console.log(respuesta);
-
-            //     }
-            // });
-
             const url = `/status/${id}/${estado}`;
             const http = new XMLHttpRequest();
 

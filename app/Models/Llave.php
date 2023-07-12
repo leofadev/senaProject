@@ -9,10 +9,6 @@ class Llave extends Model
 {
     use HasFactory;
 
-    // public function ambientes(){
-    //     return $this->hasOne(Ambiente::class,'id', 'id_ambiente');
-    // }
-
     public function ambientes(){
         return $this->belongsTo(Ambiente::class, 'id');
     }
